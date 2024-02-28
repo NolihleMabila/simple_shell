@@ -56,7 +56,7 @@ int _eputchar(char c)
 	if (c == BUFFER_FLUSH || index >= WRITE_BUFFER_SIZE)
 	{
 		write(2, buffer, index);
-		index= 0;
+		index = 0;
 	}
 	if (c != BUFFER_FLUSH)
 		buffer[index++] = c;

@@ -4,7 +4,7 @@
  * **strtow - splits a string into words using a delimiter
  * @str: input string
  * @d: delimeter
- * Return: a pointer to an array of strings, or NULL on failure.
+ * Return: a pointer toi an array of strings, or NULL on failure.
  */
 
 char **strtow(char *str, char *d)
@@ -17,7 +17,8 @@ char **strtow(char *str, char *d)
 	if (!d)
 		d = " ";
 	for (index = 0; str[index] != '\0'; index++)
-		if (!is_delim(str[index], d) && (is_delim(str[index + 1], d) || !str[index + 1]))
+		if (!is_delim(str[index], d) && (is_delim(str[index + 1], d)
+					|| !str[index + 1]))
 			num_words++;
 
 	if (num_words == 0)
@@ -35,16 +36,16 @@ char **strtow(char *str, char *d)
 		s[l] = malloc((k + 1) * sizeof(char));
 		if (!s[l])
 		{
-			for (l = 0; k < l; k++)
+			for (k = 0; k < l; k++)
 				free(s[k]);
 			free(s);
 			return (NULL);
 		}
 		for (m = 0; m < k; m++)
-			s[k][m] = str[index++];
-		s[k][m] = 0;
+			s[l][m] = str[index++];
+		s[l][m] = 0;
 	}
-	s[k] = NULL;
+	s[l] = NULL;
 	return (s);
 }
 
